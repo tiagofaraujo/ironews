@@ -1,0 +1,16 @@
+ <a href="/news">Link to the News Portal</a>
+<h2>Read the full article</h2>
+
+
+<h1>{{title}}</h1>
+<h2>Category: {{category}}</h2>
+ <img src="{{image}}" alt="image article" width="180" height="150" />
+<p>{{content}}</p>
+
+<div>
+  
+    <form action="/news/{{_id}}/delete" method="POST">
+      <button>Delete article</button>
+    </form>
+</div>
+

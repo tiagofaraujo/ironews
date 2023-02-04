@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>{{appTitle}}</title>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="/stylesheets/style.css" />
+   </head>
+
+   <body>
+      <nav>
+         <a href="/">Home</a>
+      </nav>
+       <nav>
+      <ul>
+         <li id="to-left"></li>
+        <a href="/profile">{{userInSession.email}}</a>
+           </li>
+              <li id="to-right">
+          {{#if userInSession}}
+          <form id="logout-form" action="/logout" method="POST">
+              <button>Logout</button>
+               </form>
+          {{else}}
+            <a href="/signup">Signup</a><span> | </span>
+           <a href="/login">Login</a>
+  {{/if}}
+        </li>
+      </ul>
+    </nav>
+
+      {{{body}}}
+
+      <script src="/js/script.js"></script>
+<footer>
+	<p style="text-align: center">
+		[WD PT 18th Oct 2022] Alona and Tiago by
+		<a target="_blank" href="https://www.ironhack.com/en">IronHack</a>
+  	</p>
+</footer>
+
+   </body>
+
+</html>

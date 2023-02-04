@@ -1,0 +1,27 @@
+<a href="/news">Link to the News Portal</a>
+<h2> Create News</h2>
+<form action="/news/create" method="POST">
+  <label for="">Title </label>
+  <input style="color:black" type="text" name="title" />
+
+  <label for="">Category </label>
+  <select name="category">
+    {{#each categoryArray}}
+    <option value="{{this}}"> {{this}}</option>
+    {{/each}}
+  </select>
+
+  <label for=""> Image url:</label>
+
+  <input style="color:black" type="text" name="image" />
+
+  <label for=""> Content </label>
+    <textarea cols="70" rows="80" name="content">{{content}}</textarea>
+
+
+  <button class="m-1 btn btn-secondary" type="submit">Create Article</button>
+
+</form>
+
+
+

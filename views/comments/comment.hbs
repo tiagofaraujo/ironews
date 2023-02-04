@@ -1,0 +1,33 @@
+<form action="/comments/create" method="post">
+ {{!--  <input type="hidden" value="{{review._id}}" name="reviewId"> --}}
+  <fieldset>
+        <!-- DESCRIPTION -->
+    <div >
+        <label for="">Comments </label>
+    <textarea cols="70" rows="10" name="content">{{content}}</textarea>
+    </div>
+  </fieldset>
+<br>
+  <!-- BUTTON -->
+  <div >
+    <button class="btn btn-primary" type="submit">Save Comment</button>
+  </div>
+</form>
+<div>
+<br>
+<br>
+  {{#each comments}}
+
+  {{userId}}
+<p>{{this.content}}</p>
+ <form action="/comments/{{this._id}}/delete" method="POST">
+  {{#if userId}}
+      <button>Delete</button> 
+      </form>
+      {{/if}}
+     {{!--     <a href="/comments/{{this._id}}/edit">
+      <button>Edit</button>
+    </a> --}}
+  
+</div>
+{{/each}}
