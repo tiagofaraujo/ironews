@@ -1,34 +1,29 @@
 const mongoose = require("mongoose");
 
-
-
 const newsSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     category: {
       type: String,
-        enum: [
-            "latest", "world", "you might also like", "back", "front"
-        ],
+      enum: ["Ironhack News", "You Might Also Like", "Backend", "Frontend"],
     },
-   image:{
+    image: {
       type: String,
-      },
+    },
     content: {
       type: String,
-      required: true
+      required: true,
     },
     owner: {
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
-      },
-      },
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
+  },
   {
-
-    timestamps: true
+    timestamps: true,
   }
 );
 

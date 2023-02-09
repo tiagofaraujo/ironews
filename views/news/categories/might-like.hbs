@@ -1,8 +1,71 @@
- <a href="/news">Link to the News Portal</a>
-<h1>>>>You might also like</h1>
+{{!-- You Might Also Like News --}}
+<div id="articles" class="mx-auto my-4">
+  <!-- Default dropend button -->
+  <div>
+    <button type="button" class="btn btn-light"> <a class="col-auto mx-2 text-decoration-none text-dark link-primary"
+        href="/news"> All Articles</a></button>
+    <div class="btn-group dropend">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Categories
+      </button>
+      <ul class="dropdown-menu">
+        <!-- Dropdown menu links -->
+        <li>
+          <a class="dropdown-item" href="/news/categories/latest">Latest News</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/news/categories/ironhack">Ironhack News</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/news/categories/might-like">You Might Also Like</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/news/categories/back">Backend News</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/news/categories/front">Frontend News</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-12">
+      <h3>You Might Also Like</h3>
+      <small class="text-secondary text-opacity-50 fs-5">Interesting articles Web Development.</small>
+    </div>
+  </div>
+  <hr>
+  {{!--Getting You Might Also Like News--}}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {{#each news}}
+    <div class="col">
+      <img src="{{this.image}}" alt="image article" class="img-fluid mb-3">
+      <h3>{{this.title}}</h3>
+        <h6><i>{{this.category}}</i></h6>
+      <a href="/news/{{this._id}}" class="btn btn-primary">Read the article</a>
+      <br>
+      <br>
+      <br>
+    </div>
+    {{/each}}
+  </div>
+</div>
 
- 
-{{#each news}}
+
+
+
+
+
+
+
+
+
+{{!--  <a href="/news">Link to the News Portal</a>
+<h1>>>>You Might Also Like</h1>
+
+{{#each result}}
   <h2>{{this.title}}</h2>
   <small>{{this.content}}</small>
-{{/each}}
+{{/each}} --}}

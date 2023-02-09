@@ -1,51 +1,69 @@
-<h1>>>>Here is the list of all News</h1>
-
-
-<div>
-<a href="/news/categories/latest">Latest News</a><span> | </span>
-<a href="/news/categories/world">Word News</a><span> | </span>
-<a href="/news/categories/might-like">You might also like</a><span> | </span>
-<a href="/news/categories/back">Back End News</a><span> | </span>
-<a href="/news/categories/front">Front End News</a><span>
-</div>
-<br>
-<div>
-<a href="/news/create">Create new article</a>| </span>
-<a href="/news">All articles</a>
-</div>
-
-<div style="display: flex; flex-wrap:wrap">
- 
-  {{#each news}}
-  <div style="width: 300px;
-  border: 15px solid lightblue;
-  padding: 50px;
-  margin: 20px; text-align:center; ">
- <h1>{{this.title}}</h1>
- <h2>{{this.category}}</h2>
-    
-    <img src="{{this.image}}" alt="image article" width="180" height="150" />
-    <br>
-    <br>
-       
-    <a href="/news/{{this._id}}">Read the article</a>
-    <br>
-<br>
-<br>
-{{!--      {{#if userInSession.isAdmin}} --}}
-    <a href="/news/{{this._id}}/edit">
-      <button>Edit</button>
-    </a>
-     
-        <form action="/news/{{this._id}}/delete" method="POST">
-  
-      <button>Delete</button> 
-
-    </form>
-{{!--       {{/if}} --}}
+{{!-- All Articles --}}
+<div id="articles" class="mx-auto my-4">
+  <!-- Default dropend button -->
+  <div>
+    <button type="button" class="btn btn-light"> <a class="col-auto mx-2 text-decoration-none text-dark link-primary"
+        href="/news"> All Articles</a></button>
+    <div class="btn-group dropend">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Categories
+      </button>
+      <ul class="dropdown-menu">
+        <!-- Dropdown menu links -->
+        <li>
+          <a class="dropdown-item" href="/news/categories/latest">Latest News</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/news/categories/ironhack">Ironhack News</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/news/categories/might-like">You Might Also Like</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/news/categories/back">Backend News</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/news/categories/front">Frontend News</a>
+        </li>
+      </ul>
+    </div>        
   </div>
-  {{/each}}
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-12">
+      <h3>All Articles</h3>
+      <small class="text-secondary text-opacity-50 fs-5">List of all articles.</small>
+    </div>
+  </div>
+  <hr>
+  {{!--Getting All Articles --}}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {{#each news}}
+    <div class=" col">
+      <img src="{{this.image}}" alt="image article" class="img-fluid mb-3">
+      <div class="card-body">
+    <h4>{{this.title}}</h4>
+      <h6><i>{{this.category}}</i></h6>
+      <a href="/news/{{this._id}}" class="btn btn-primary">Read the article</a>
+      </div>
+      <br>
+     <div class="card-text">
+      {{#if ../isAdmin}}
+      <a class="btn btn-info" href="/news/{{this._id}}/edit">
+        Edit
+      </a>
+            <form  style=" display:inline" action="/news/{{this._id}}/delete" method="POST">
+        <button class="btn btn-warning">Delete</button>
+      </form>
+      {{/if}}
+      </div>
+      <br>
+      <br>
+    </div>
+    
+    {{/each}}
+  </div>
 
+</div>
 
-
-  

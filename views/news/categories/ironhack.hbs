@@ -1,4 +1,4 @@
-{{!-- You Might Also Like News --}}
+{{!-- Ironhack News --}}
 <div id="articles" class="mx-auto my-4">
   <!-- Default dropend button -->
   <div>
@@ -32,14 +32,14 @@
   <br>
   <div class="row">
     <div class="col-12">
-      <h3>Frontend News</h3>
-      <small class="text-secondary text-opacity-50 fs-5">Few Frontend articles .</small>
+      <h3>Ironhack News</h3>
+      <small class="text-secondary text-opacity-50 fs-5">Few articles from our academy.</small>
     </div>
   </div>
   <hr>
-  {{!--Getting You Might Also Like News--}}
+  {{!--Getting Ironhack News--}}
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    {{#each result}}
+    {{#each news}}
     <div class="col-3">
       <img src="{{this.image}}" alt="image article" class="img-fluid mb-3">
       <h3>{{this.title}}</h3>

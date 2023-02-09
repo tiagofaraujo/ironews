@@ -1,27 +1,41 @@
-<a href="/news">Link to the News Portal</a>
-<h2> Create News</h2>
-<form action="/news/create" method="POST">
-  <label for="">Title </label>
-  <input style="color:black" type="text" name="title" />
-
-  <label for="">Category </label>
-  <select name="category">
-    {{#each categoryArray}}
-    <option value="{{this}}"> {{this}}</option>
-    {{/each}}
-  </select>
-
-  <label for=""> Image url:</label>
-
-  <input style="color:black" type="text" name="image" />
-
-  <label for=""> Content </label>
-    <textarea cols="70" rows="80" name="content">{{content}}</textarea>
-
-
-  <button class="m-1 btn btn-secondary" type="submit">Create Article</button>
+      <br>
+      <br>      
+      <h3>Create new article</h3>
+      <br>
+      <br>
+       <form action="/news/create" method="POST" enctype="multipart/form-data">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Title</label>
+      <input type="text" class="form-control" name="title">
+    </div>
+    <br>
+    <label for="">Category </label>
+    <select name="category">
+      {{#each categoryArray}}
+      <option value="{{this}}"> {{this}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <br>
+  <br>
+  <div class="form-group">
+    <input type="file" name="cover-image" value="{{news.image}}">
+    <label for="">Upload Image</label>
+  </div>
+  <br>
+  <br>
+  <div class="form-group">
+    <div>
+  <label for="">Insert text</label>
+    </div>
+      <textarea cols="100" rows="0" name="content">{{content}}</textarea>
+  </div>
+  </div>
+  <br>
+  <br>
+  <button type="submit" class="btn btn-primary">Create</button>
 
 </form>
-
-
-
+<br>
+<br>

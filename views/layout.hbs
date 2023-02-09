@@ -1,47 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{appTitle}}</title>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <link rel="stylesheets" href="/stylesheets/style.css" />
-   </head>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>{{appTitle}}</title>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+   <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
 
-   <body>
-      <nav>
-         <a href="/">Home</a>
-      </nav>
-       <nav>
-      <ul>
-         <li id="to-left"></li>
-        <a href="/profile">{{userInSession.email}}</a>
-           </li>
-              <li id="to-right">
-          {{#if userInSession}}
-          <form id="logout-form" action="/logout" method="POST">
-              <button>Logout</button>
-               </form>
-          {{else}}
-            <a href="/signup">Signup</a><span> | </span>
-           <a href="/login">Login</a>
-  {{/if}}
-        </li>
-      </ul>
-    </nav>
+<body class="container-fluid">
 
-      {{{body}}}
+    <!-- Navbar -->
+   <nav class="navbar bg-light row">
+      <div class="col-2 text-center ">
+          <!-- Navbar brand -->
+         <h4> <a href="/" class="text-decoration-none text-dark link-primary"> <img class="sticky-sm-top" src="/images/logo.png" alt="logo" width="10%"> IRONEWS </a> </h4>
+      </div>
+      <div class="col d-flex">
+          <!-- Main Menu -->
+         <a href="/" class="col-auto mx-2 text-decoration-none text-dark link-primary">Home</a>
+         <a href="/about" class="col-auto mx-2 text-decoration-none text-dark link-primary">
+            About</a>
+      <div class="dropdown">
+ <a class="dropdown-toggle col-auto mx-2 text-decoration-none text-dark link-primary" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+               Contact
+            </a>
+            <ul class="dropdown-menu">
+<li> <a class="dropdown-item py-2" style="border-bottom: 1px link-primary" href="https://www.linkedin.com/in/tiagofaraujo/">Linkedin</a> </li>
+            </ul>
+</div>
+         <div class="dropdown">
+            <a class="dropdown-toggle col-auto mx-2 text-decoration-none text-dark link-primary" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+               Account
+            </a>
+            <ul class="dropdown-menu">
+               {{#if userInSession}}
+               <li>
+                  <form id="logout-form" action="/logout" method="POST">
+                     <button class="dropdown-item pb-2" style="border-bottom: 1px link-primary">Logout</button>
+                  </form>
+               </li>
+               <li>
+{{#if isAdmin}}
+    <button  class="dropdown-item pb-2" style="border-bottom: 1px link-primary"> <a class="col-auto mx-2 text-decoration-none text-dark link-primary"
+        href="/news/create">Create new article</a></button>
+           {{/if}}
+               </li>
+     
+               {{else}}
+               <li><a class="dropdown-item py-2" style="border-bottom: 1px solid green" href="/signup">Signup</a></li>
+               <li><a class="dropdown-item pt-2" style="border-bottom: 1px solid blue" href="/login">Login</a></li>
+               {{/if}}
+            </ul>
+         </div>
+         <a href="/news" class="col-auto mx-2 text-decoration-none text-info link-danger">{{userInSession.email}}</a>
+      </div>
+   </nav>
+   <header></header>
+   <section>
 
-      <script src="/js/script.js"></script>
-<footer>
-	<p style="text-align: center">
-		[WD PT 18th Oct 2022] Alona and Tiago by
-		<a target="_blank" href="https://www.ironhack.com/en">IronHack</a>
-  	</p>
-</footer>
 
-   </body>
+   </section>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"></script>
+   {{{body}}}
+   <script src="/js/script.js"></script>
+
+{{!-- Footer --}}
+   <footer>
+
+      <div class="row m-0 bg-light black" >
+        <div class="mx-auto" style="max-width: 1200px">
+       
+          <div class="text-black col-12 p-3">
+          © 2022 Copyright: [WD PT 18th Oct 2022] Tiago Araújo by
+         <a target="_blank" href="https://www.ironhack.com/en">IronHack</a> 
+         <p>{{appTitle}} 🚀</p>
+          </div>
+        </div>
+
+   </footer>
+
+
+</body>
 
 </html>

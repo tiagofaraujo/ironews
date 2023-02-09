@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 
-
-
 const userSchema = new mongoose.Schema(
-    {
-      username: {
-        type: String,
-        required: false,
-      },
+  {
+    username: {
+      type: String,
+      required: false,
+    },
     email: {
       type: String,
       required: [true, "Email is required"],
@@ -16,25 +14,23 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-     passwordHash: {
+    passwordHash: {
       type: String,
       required: [true, "Password is required"],
       minlength: [7, "please put a 7 minimal length"],
     },
-   admin: {
+    admin: {
       type: Boolean,
       required: [false, "Role is required"],
-      default:false,
-
-        },
-        avatarUrl: {
-          type: String,
-          default: 'images/default-avatar.png'
-        }
+      default: false,
+    },
+    avatarUrl: {
+      type: String,
+      default: "/images/userLogo.png",
+    },
   },
   {
-   
-    timestamps: true
+    timestamps: true,
   }
 );
 

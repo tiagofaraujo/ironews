@@ -1,27 +1,44 @@
-<a href="/news">Link to the News Portal</a>
-
-<h2> Edit Article: {{news.title}}</h2>
-
+<br>
+<br>
+<h3> Edit Article: {{news.title}}</h3>
+<br>
+<br>
 <form action="/news/{{news._id}}/edit" method="POST">
+<div class="form-row">
+  <div class="form-group col-md-6">
   <label for="">Title</label>
-  <input style="color:black" type="text" name="title" value="{{news.title}}">
-
-
-  <label for="">Category </label>
-  <select name="">
+  <input type="text" name="title" value="{{news.title}}" class="form-control">
+</div>
+<br>
+ <label for="">Category </label>
+  <select name="category">
     {{#each categoryArray}}
     <option value="{{this}}"> {{this}}</option>
     {{/each}}
   </select>
+</div>
+<br>
+<br>
+<div class="form-group">
+  <label for=""> Upload Image </label>
+  <img style="height: 80px" class="img-thumbnail" src="{{news.image}}" alt="image article">
+      <input style="color:black" type="file" name="cover-image" value="{{news.image}}">
+     </div>
+  <br>
+  <br>
+<div class="form-group">
 
-  <label for="image"> Image </label>
-    <input style="color:black" type="text" name="image" value="{{news.image}}">
-
-  <label for="content"> Content </label>
-  <textarea cols="70" rows="100" name="content">{{news.content}}</textarea>
-
+<div>
+  <label for="content"> Edit text </label>
+  </div>
+  <textarea cols="100" rows="10" name="content">{{news.content}}</textarea>
+</div>
+<br>
+<br>
 
   <button class="m-1 btn btn-secondary" type="submit">Save Changes</button>
 
 </form>
+<br>
+<br>
 

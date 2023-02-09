@@ -1,23 +1,22 @@
 const mongoose = require("mongoose");
 
-
 const commentSchema = new mongoose.Schema(
   {
-    newsId :{
-        type: mongoose.Types.ObjectId,
-        ref: 'News'
-      },
-      userId : {
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
-      },
-      content: {
-        type: String,
-        required: true
-      },
+    newsId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "News",
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    commentContent: {
+      type: String,
+      required: true,
+    },
   },
   {
-         timestamps: true
+    timestamps: true,
   }
 );
 
