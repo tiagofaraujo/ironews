@@ -47,9 +47,6 @@ router.post("/signup", (req, res, next) => {
         passwordHash: hashedPassword,
       });
     })
-    .then(() => {
-      res.redirect("./news");
-    })
     .then((userFromDB) => {
       console.log("Newly created user is: ", userFromDB);
       res.redirect("/news");
@@ -120,9 +117,9 @@ router.post("/logout", (req, res, next) => {
 });
 
 //Get the About Page
-router.get("/about", (req, res) => {
-  res.render("about");
-});
+// router.get("/about", (req, res) => {
+//   res.render("about");
+// });
 
 /* 
 //ALL Users (Admin Panel)
