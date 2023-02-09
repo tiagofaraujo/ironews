@@ -26,7 +26,7 @@
           <a class="dropdown-item" href="/news/categories/front">Frontend News</a>
         </li>
       </ul>
-    </div>        
+    </div>
   </div>
   <br>
   <br>
@@ -43,27 +43,24 @@
     <div class=" col">
       <img src="{{this.image}}" alt="image article" class="img-fluid mb-3">
       <div class="card-body">
-    <h4>{{this.title}}</h4>
-      <h6><i>{{this.category}}</i></h6>
-      <a href="/news/{{this._id}}" class="btn btn-primary">Read the article</a>
+        <h4>{{this.title}}</h4>
+        <h6><i>{{this.category}}</i></h6>
+        <a href="/news/{{this._id}}" class="btn btn-primary">Read the article</a>
       </div>
       <br>
-     <div class="card-text">
-      {{#if ../isAdmin}}
-      <a class="btn btn-info" href="/news/{{this._id}}/edit">
-        Edit
-      </a>
-            <form  style=" display:inline" action="/news/{{this._id}}/delete" method="POST">
-        <button class="btn btn-warning">Delete</button>
-      </form>
-      {{/if}}
+      <div class="card-text">
+        {{#if ../isAdmin}}
+        <a class="btn btn-info" href="/news/{{this._id}}/edit">
+          Edit
+        </a>
+        <form style=" display:inline" action="/news/{{this._id}}/delete" method="POST">
+          <button class="btn btn-warning">Delete</button>
+        </form>
+        {{/if}}
       </div>
       <br>
       <br>
     </div>
-    
     {{/each}}
   </div>
-
 </div>
-

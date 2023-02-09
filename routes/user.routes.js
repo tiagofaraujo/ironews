@@ -13,7 +13,7 @@ router.get("/signup", (req, res) => {
 
 // POST login route ==> to process form data
 router.post("/signup", (req, res, next) => {
-  console.log("the form data", req.body);
+// console.log("the form data", req.body);
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -39,16 +39,16 @@ router.post("/signup", (req, res, next) => {
       return bcryptjs.hash(password, salt);
     })
     .then((hashedPassword) => {
-      console.log("Hasted Password", hashedPassword);
-      console.log("Password", password);
-      console.log("email ", email);
+    //  console.log("Hasted Password", hashedPassword);
+    //  console.log("Password", password);
+     // console.log("email ", email);
       return User.create({
         email: email,
         passwordHash: hashedPassword,
       });
     })
     .then((userFromDB) => {
-      console.log("Newly created user is: ", userFromDB);
+    //  console.log("Newly created user is: ", userFromDB);
       res.redirect("/news");
     })
     .catch((error) => {
@@ -67,18 +67,18 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.get("/login", (req, res) => {
-  console.log(req.session);
+ // console.log(req.session);
   res.render("index");
 });
 
 router.get("/profile", isLoggedIn, (req, res) => {
-  console.log("user:", req.session.currentUser);
+ // console.log("user:", req.session.currentUser);
   res.render("index", { userInSession: req.session.currentUser });
 });
 
 router.post("/login", (req, res) => {
-  console.log("SESSION =====>", req.session);
-  console.log(req.body);
+ // console.log("SESSION =====>", req.session);
+//  console.log(req.body);
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -91,7 +91,7 @@ router.post("/login", (req, res) => {
   User.findOne({ email })
     .then((user) => {
       const { username, email, admin, _id } = user;
-      console.log(email);
+    //  console.log(email);
       if (!user) {
         res.render("index", {
           errorMessage:
@@ -117,9 +117,9 @@ router.post("/logout", (req, res, next) => {
 });
 
 //Get the About Page
-// router.get("/about", (req, res) => {
-//   res.render("about");
-// });
+router.get("/about", (req, res) => {
+res.render("about");
+});
 
 /* 
 //ALL Users (Admin Panel)

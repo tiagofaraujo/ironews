@@ -4,41 +4,37 @@
 <br>
 <br>
 <form action="/news/{{news._id}}/edit" method="POST">
-<div class="form-row">
-  <div class="form-group col-md-6">
-  <label for="">Title</label>
-  <input type="text" name="title" value="{{news.title}}" class="form-control">
-</div>
-<br>
- <label for="">Category </label>
-  <select name="category">
-    {{#each categoryArray}}
-    <option value="{{this}}"> {{this}}</option>
-    {{/each}}
-  </select>
-</div>
-<br>
-<br>
-<div class="form-group">
-  <label for=""> Upload Image </label>
-  <img style="height: 80px" class="img-thumbnail" src="{{news.image}}" alt="image article">
-      <input style="color:black" type="file" name="cover-image" value="{{news.image}}">
-     </div>
-  <br>
-  <br>
-<div class="form-group">
-
-<div>
-  <label for="content"> Edit text </label>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Title</label>
+      <input type="text" name="title" value="{{news.title}}" class="form-control">
+    </div>
+    <br>
+    <label for="">Category </label>
+    <select name="category">
+      {{#each categoryArray}}
+      <option value="{{this}}"> {{this}}</option>
+      {{/each}}
+    </select>
   </div>
-  <textarea cols="100" rows="10" name="content">{{news.content}}</textarea>
-</div>
-<br>
-<br>
-
+  <br>
+  <br>
+  <div class="form-group">
+    <label for=""> Upload Image </label>
+    <img style="height: 80px" class="img-thumbnail" src="{{news.image}}" alt="image article">
+    <input style="color:black" type="file" name="cover-image" value="{{news.image}}">
+  </div>
+  <br>
+  <br>
+  <div class="form-group">
+    <div>
+      <label for="content"> Edit text </label>
+    </div>
+    <textarea cols="100" rows="10" name="content">{{news.content}}</textarea>
+  </div>
+  <br>
+  <br>
   <button class="m-1 btn btn-secondary" type="submit">Save Changes</button>
-
 </form>
 <br>
 <br>
-

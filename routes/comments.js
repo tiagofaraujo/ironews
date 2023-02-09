@@ -6,7 +6,7 @@ const { isLoggedIn, isAdmin } = require("../middleware/route-guard");
 router.get("/comments", isLoggedIn, (req, res, next) => {
   Comment.find()
     .then((comment) => {
-      console.log(comment);
+     // console.log(comment);
       res.render("news/news-details", {
         comments: comment,
         userInSession: req.session.currentUser,
@@ -16,7 +16,7 @@ router.get("/comments", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/comments/create/:newsId", isLoggedIn, (req, res) => {
-  console.log(req.body);
+//  console.log(req.body);
   const { newsId } = req.params;
   const { commentContent } = req.body;
   Comment.create({
@@ -25,7 +25,7 @@ router.post("/comments/create/:newsId", isLoggedIn, (req, res) => {
     commentContent: commentContent,
   })
     .then((comment) => {
-      console.log("new comment was created: " + comment);
+   //   console.log("new comment was created: " + comment);
       res.redirect(`/news/${newsId}`);
     })
     .catch((error) => {
@@ -38,11 +38,11 @@ router.post("/comments/create/:newsId", isLoggedIn, (req, res) => {
 router.post("/comments/:commentId/delete", isLoggedIn, (req, res) => {
   const { commentId } = req.params;
   Comment.findById().then((comment) => {
-    console.log(comment);
+    //console.log(comment);
     /*  if(req.session.currentUser._id === comment.userId){ */
     Comment.findByIdAndRemove(commentId)
       .then((comment) => {
-        console.log(comment + "was deleted.");
+      //  console.log(comment + "was deleted.");
         res.redirect(`/news/${comment.newsId}`);
       })
       .catch((error) => {

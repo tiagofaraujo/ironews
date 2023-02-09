@@ -10,6 +10,7 @@
               <div id="form" class="bg-white rounded-5 shadow-5-strong p-5">
                 <h4>Welcome!</h4>
                 <form action="/signup" method="POST">
+
                   <!-- Email input -->
                   <div class="form-outline mb-4">
                     <input id="form1Example1" type="text" name="email" class="form-control" />
@@ -22,32 +23,20 @@
                     <label class="form-label" for="form1Example2">Password</label>
                   </div>
 
-                  <!-- 2 column grid layout for inline styling -->
-                  
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                      <!-- Login button -->
-                      <button type="submit" class="col btn btn-success">Signup</button>
-                      <br>
-                      {{#if errorMessage}}
-                      <p class="alert alert-danger" class="error">{{errorMessage}}</p>
-                      {{/if}}
+                  <!-- Login button -->
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="col btn btn-success">Signup</button>
+                    <br>
+                    {{#if errorMessage}}
+                    <p class="alert alert-danger" class="error">{{errorMessage}}</p>
+                    {{/if}}
+                  </div>
                 </form>
               </div>
-
-
-
             </div>
-
-
-
-
-
           </div>
         </div>
       </div>
     </div>
-    <!-- Background image -->
   </header>
-  <!--Main Navigation-->
-
 </div>

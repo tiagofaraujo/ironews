@@ -8,10 +8,10 @@ const fileUploader = require("../config/cloudinary.config");
 //all news articles
 
 router.get("/news", isLoggedIn, (req, res, next) => {
-  console.log(req.session.currentUser);
+  //console.log(req.session.currentUser);
   News.find()
     .then((news) => {
-      console.log(news);
+     // console.log(news);
       res.render("news/news", {
         news: news,
         userInSession: req.session.currentUser,
@@ -40,10 +40,10 @@ router.post(
   isLoggedIn,
   fileUploader.single("cover-image"),
   (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     const { title, category, image, content, owner } = req.body;
-    console.log(req.file);
-    console.log(req.file.path);
+   // console.log(req.file);
+   // console.log(req.file.path);
     News.create({
       title: title,
       category: category,
@@ -52,11 +52,11 @@ router.post(
       owner: req.session.currentUser._id,
     })
       .then((result) => {
-        console.log("new article was created: " + result);
+      //  console.log("new article was created: " + result);
         res.redirect("/news");
       })
       .catch((error) => {
-        console.log("An error occurred while creating a New article: " + error);
+      //  console.log("An error occurred while creating a New article: " + error);
         res.render("/news/create-news");
       });
   }
@@ -102,10 +102,10 @@ router.get("/news/:newsId", isLoggedIn, (req, res) => {
     .then((result) => {
       const comments = Comment.find({ newsId: newsId }).populate("userId").then(
         (resultComments) => {
-          console.log(result);
-          console.log(resultComments);
+        //  console.log(result);
+        //  console.log(resultComments);
           resultComments.forEach((element) => {
-            console.log("Elem " + element.userId);
+          //  console.log("Elem " + element.userId);
             if (element.userId == req.session.currentUser._id)
               element.commentSelf = true;
             else element.commentSelf = false;
@@ -127,7 +127,7 @@ router.post("/news/:newsId/delete", isLoggedIn, isAdmin, (req, res) => {
 
   News.findByIdAndRemove(newsId)
     .then((news) => {
-      console.log(news + "was deleted.");
+     // console.log(news + "was deleted.");
       res.redirect("/news");
     })
     .catch((error) => {
@@ -143,7 +143,7 @@ so that the user sees the last created news. */
 router.get("/news/categories/latest", isLoggedIn, (req, res) => {
   News.find()
     .then((result) => {
-      console.log(result);
+     // console.log(result);
       res.render("news/categories/latest", {news:result.reverse()});
     })
     .catch((err) => console.log("error getting latest news", err));
@@ -152,7 +152,7 @@ router.get("/news/categories/latest", isLoggedIn, (req, res) => {
 router.get("/news/categories/ironhack", isLoggedIn, (req, res) => {
   News.find({ category: "Ironhack News" })
     .then((result) => {
-      console.log(result);
+     // console.log(result);
       res.render("news/categories/ironhack", { news: result });
     })
     .catch((err) => console.log("error getting ironhack news", err));
@@ -161,7 +161,7 @@ router.get("/news/categories/ironhack", isLoggedIn, (req, res) => {
 router.get("/news/categories/might-like", isLoggedIn, (req, res) => {
   News.find({ category: "You Might Also Like" })
     .then((result) => {
-      console.log(result);
+     // console.log(result);
       res.render("news/categories/might-like.hbs", {news:result});
     })
     .catch((err) => console.log("error getting you might also like news", err));
@@ -171,7 +171,7 @@ router.get("/news/categories/might-like", isLoggedIn, (req, res) => {
 router.get("/news/categories/back", isLoggedIn, (req, res) => {
   News.find({ category: "Backend" })
     .then((result) => {
-      console.log(result);
+     // console.log(result);
       res.render("news/categories/back",  {result});
     })
     .catch((err) => console.log("error getting Backend news", err));
@@ -180,7 +180,7 @@ router.get("/news/categories/back", isLoggedIn, (req, res) => {
 router.get("/news/categories/front", isLoggedIn, (req, res) => {
   News.find({ category: "Frontend" })
     .then((result) => {
-      console.log(result);
+     // console.log(result);
       res.render("news/categories/front", {result});
     })
     .catch((err) => console.log("error getting front end news", err));

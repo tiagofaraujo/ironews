@@ -7,9 +7,9 @@
         <div class="container">
           <div class="row justify-content-left">
             <div class="col-xl-5 col-md-8">
-            
+
               <div id="form" class="bg-white rounded-5 shadow-5-strong p-5">
-                    <h4>Welcome!</h4>
+                <h4>Welcome!</h4>
                 <form action="/login" method="POST">
                   <!-- Email input -->
                   <div class="form-outline mb-4">
@@ -22,31 +22,23 @@
                     <input type="password" name="password" id="form1Example2" class="form-control" />
                     <label class="form-label" for="form1Example2">Password</label>
                   </div>
-
-                 
-                 
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                      <!-- Login button -->
-                      <button type="submit" class="btn btn-primary">Login</button>
-                      {{#if errorMessage}}
-                      <br>
-                      <p class="alert alert-warning" class="error">{{errorMessage}}</p>
-                      {{/if}}
-                      </div>
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                    <!-- Login button -->
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    {{#if errorMessage}}
+                    <br>
+                    <p class="alert alert-warning" class="error">{{errorMessage}}</p>
+                    {{/if}}
+                  </div>
                 </form>
-              <br>
-<div class="col d-flex justify-content-center">
-              <form method="get" action="/signup">
-                  <button class="btn btn-success" type="submit">Create new account</button>
-</div>
+                <br>
+                <div class="col d-flex justify-content-center">
+                  <form method="get" action="/signup">
+                    <button class="btn btn-success" type="submit">Create new account</button>
+                </div>
                 </form>
               </div>
             </div>
-
-
-
-
-
           </div>
         </div>
       </div>
@@ -54,5 +46,4 @@
     <!-- Background image -->
   </header>
   <!--Main Navigation-->
-
 </div>

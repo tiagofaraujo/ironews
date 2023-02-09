@@ -17,7 +17,7 @@ const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
-require('./config/session.config')(app);
+require("./config/session.config")(app);
 
 // default value for title local
 const capitalize = require("./utils/capitalize");
@@ -26,10 +26,10 @@ const projectName = "project-2";
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
 app.use((req, res, next) => {
-    app.locals.userInSession = req.session.currentUser
+  app.locals.userInSession = req.session.currentUser;
 
-    next()
-})
+  next();
+});
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
@@ -38,14 +38,13 @@ app.use("/", indexRoutes);
 const newsRoute = require("./routes/news.routes");
 app.use("/", newsRoute);
 
-const authRoutes = require('./routes/user.routes'); 
-app.use('/', authRoutes);
+const authRoutes = require("./routes/user.routes");
+app.use("/", authRoutes);
 
-const comments = require('./routes/comments');
-app.use('/', comments);
+const comments = require("./routes/comments");
+app.use("/", comments);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
-
 
 module.exports = app;
