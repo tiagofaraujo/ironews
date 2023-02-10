@@ -33,8 +33,6 @@ router.get("/news/create", isLoggedIn, (req, res, next) => {
   res.render("news/create-news", { categoryArray });
 });
 
-//fileUploader.single('news-image'),
-
 router.post(
   "/news/create",
   isLoggedIn,
@@ -63,7 +61,7 @@ router.post(
 );
 
 //POST for edit
-router.get("/news/:newsId/edit", isLoggedIn, isAdmin, (req, res) => {
+router.get("/news/:newsId/edit", isLoggedIn, isAdmin,(req, res) => {
   const { newsId } = req.params;
   News.findById(newsId)
     .then((newsToEdit) => {
@@ -72,7 +70,7 @@ router.get("/news/:newsId/edit", isLoggedIn, isAdmin, (req, res) => {
     .catch((err) => console.log("error getting news articles to edit", err));
 });
 
-router.post("/news/:newsId/edit", isLoggedIn, isAdmin, (req, res, next) => {
+router.post("/news/:newsId/edit", isLoggedIn, isAdmin,(req, res, next) => {
   const { newsId } = req.params;
   const { title, category, image, content } = req.body;
 
@@ -97,18 +95,21 @@ router.get("/news/:newsId", isLoggedIn, (req, res) => {
   const { newsId } = req.params;
 
   News.findById(newsId)
-    .populate("owner")
+   .populate("owner")
 
     .then((result) => {
       const comments = Comment.find({ newsId: newsId }).populate("userId").then(
         (resultComments) => {
         //  console.log(result);
-        //  console.log(resultComments);
+          console.log(resultComments);
           resultComments.forEach((element) => {
-          //  console.log("Elem " + element.userId);
-            if (element.userId == req.session.currentUser._id)
+          //console.log("Elem " + element.userId);
+          if (element.userId.email === req.session.currentUser.email){
+            //  console.log("selfcommentTRUE");
               element.commentSelf = true;
-            else element.commentSelf = false;
+            }else{ element.commentSelf = false;
+              console.log("selfcommentFALSE");
+            }
           });
           res.render("news/news-details", {
             result,
