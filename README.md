@@ -1,8 +1,8 @@
 # Project Name
-
+Ironews 
 ## Description
 
-Describe your project in one/two lines.
+A regularly updated website, run by the administrator, that creates, edits and delete the articles.
  
 ## User Stories
 
@@ -22,16 +22,19 @@ Describe your project in one/two lines.
 List of other features outside of the MVPs scope
 
 User profile:
-- see my profile
-- upload my profile picture
-- see other users profile
-- list of events created by the user
-- list events the user is attending
+- see the articles 
+- see the comments of each article
+- comment each articles 
+- delete the comment of his
 
-Geo Location:
-- add geolocation to events when creating
-- show event in a map in event detail page
-- show all events in a map in the event list page
+Admin profile:
+- see the articles 
+- see the comments of each article
+- comment each articles 
+- delete the comment of his
+- write articles
+- edit articles
+- delete articles
 
 Homepage
 - ...
@@ -47,8 +50,7 @@ Homepage
 - POST /auth/signup
   - redirects to / if user logged in
   - body:
-    - username
-    - email
+     - email
     - password
 - GET /auth/login
   - redirects to / if user logged in
@@ -56,27 +58,27 @@ Homepage
 - POST /auth/login
   - redirects to / if user logged in
   - body:
-    - username
+    - email
     - password
 - POST /auth/logout
   - body: (empty)
 
-- GET /events
-  - renders the event list + the create form
-- POST /events/create 
+- GET /news
+  - renders the news list + the create form
+- POST /news/create 
   - redirects to / if user is anonymous
   - body: 
-    - name
-    - date
-    - location
-    - description
-- GET /events/:id
+    - title
+    - category
+    - image
+    - content
+- GET /news/:id
   - renders the event detail page
   - includes the list of attendees
   - attend button if user not attending yet
-- POST /events/:id/attend 
-  - redirects to / if user is anonymous
-  - body: (empty - the user is already stored in the session)
+- POST /news/:id/edit
+- POST /news/:id/delete
+ 
 
 
 ## Models
@@ -84,38 +86,37 @@ Homepage
 User model
  
 ```
-username: String
+email: String
 password: String
 ```
 
-Event model
-
-```
-owner: ObjectId<User>
-name: String
-description: String
-date: Date
-location: String
-attendees: [ObjectId<User>]
+News model
+title: String
+category: String
+image: String
+content: String
+owner: mongoose.Types.ObjectId
 ``` 
-
+Comments model
+newsId: mongoose.Schema.Types.ObjectId,
+userId: mongoose.Schema.Types.ObjectId,
+commentContent: String,
+  
 ## Links
 
 ### Trello
-
-[Link to your trello board](https://trello.com) or picture of your physical board
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Repository Link](http://github.com)
+[Repository Link]()
 
-[Deploy Link](http://heroku.com)
+[Deploy Link]()
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link]()
 
